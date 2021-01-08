@@ -47,20 +47,17 @@ elseif (isset($_POST['complete'])) {
         <tbody>
 
             <?php
-            # Entering PHP mode, 
             $sth = $pdo->prepare("SELECT * FROM todos ORDER BY id DESC");
             $sth->execute();
 
             foreach ($sth as $row) {
-                # Exiting PHP Mode
             ?>
                 <tr>
                     <td>
-                        <!-- This is PHP shorthand for inserting dynamic text into HTML -->
                         <?= htmlspecialchars($row['description']) ?>
                     </td>
                     <td>
-                        <?php # Here we are mixing HTML and PHP to get the desired document
+                        <?php
                         if (!$row['complete']) {
                         ?>
                             <form method="POST">
